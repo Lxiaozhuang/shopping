@@ -1,21 +1,21 @@
 <template>
   <div id="app">
     <mainHeader/>
-    <mainContent/>
+    <router-view></router-view>
     <mainFooter/>
   </div>
 </template>
 
 <script>
 import mainHeader from './components/mainHeader'
-import mainContent from './components/content/mainContent'
+
 import mainFooter from './components/mainFooter'
 
 export default {
   name: 'App',
   components:{
     mainHeader,
-    mainContent,
+   
     mainFooter
   }
 }

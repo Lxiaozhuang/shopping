@@ -35,7 +35,7 @@
             <h2>{{ item.title }}</h2>
             <p>{{ item.description }}</p>
             <div class="index-board-button">
-              <a class="button">立即购买</a>
+              <router-link class="button" :to="{path:'detail/'+item.toKey}">立即购买</router-link>
             </div>  
           </div>
         </div>
@@ -45,48 +45,49 @@
 </template>
 
 <script>
-import datas from '../../../db.json';
 import slides from './slides'
 export default {
     components:{
         slides
     },
     created(){
-        this.newList=datas.getNewsList;
-        console.log(this.newList)
+        this.datas=this.$store.state.data
+        this.$store.dispatch('getAllList');
+        this.newList=this.datas.getNewsList;
     },
     data (){
         return {
+            datas:[],
             boardList: [
-            {
-            title: '开放产品',
-            description: '开放产品是一款开放产品',
-            id: 'car',
-            toKey: 'analysis',
-            saleout: false
-            },
-            {
-            title: '品牌营销',
-            description: '品牌营销帮助你的产品更好地找到定位',
-            id: 'earth',
-            toKey: 'count',
-            saleout: false
-            },
-            {
-            title: '使命必达',
-            description: '使命必达快速迭代永远保持最前端的速度',
-            id: 'loud',
-            toKey: 'forecast',
-            saleout: true
-            },
-            {
-            title: '勇攀高峰',
-            description: '帮你勇闯高峰，到达事业的顶峰',
-            id: 'hill',
-            toKey: 'publish',
-            saleout: false
-            }
-        ],
+                {
+                title: '开放产品',
+                description: '开放产品是一款开放产品',
+                id: 'car',
+                toKey: 'analysis',
+                saleout: false
+                },
+                {
+                title: '品牌营销',
+                description: '品牌营销帮助你的产品更好地找到定位',
+                id: 'earth',
+                toKey: 'count',
+                saleout: false
+                },
+                {
+                title: '使命必达',
+                description: '使命必达快速迭代永远保持最前端的速度',
+                id: 'loud',
+                toKey: 'forecast',
+                saleout: true
+                },
+                {
+                title: '勇攀高峰',
+                description: '帮你勇闯高峰，到达事业的顶峰',
+                id: 'hill',
+                toKey: 'publish',
+                saleout: false
+                }
+            ],
             newList:[],
             productList: {
                 pc: {
@@ -136,7 +137,8 @@ export default {
                 }
             }
         }
-    }
+    },
+    
 }
 </script>
 
@@ -249,5 +251,12 @@ export default {
   padding: 20px;
   margin-right: 20px;
   margin-bottom: 20px;
+}
+.button{
+    background: #4fc08d;
+    color: #fff;
+    display: inline-block;
+    padding: 10px 20px;
+    cursor: pointer;
 }
 </style>
