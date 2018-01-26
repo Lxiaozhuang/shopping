@@ -2,7 +2,8 @@
   <div class="content clearFix">
       <div class="detail-left">
           <img :src="productorIcon">
-          <ul>
+          <ul class="text">
+              <!-- active-class是给跳转的路由添加样式 -->
               <router-link v-for="item in products" tag='li' active-class="active" :to=item.path>{{item.name}}</router-link>
           </ul>
       </div>
@@ -69,8 +70,8 @@ export default {
     float: left;
     width: 200px;
     text-align: center;
-    padding: 20px 0;
-    /* background: #fff; */
+    margin: 20px 0;
+    background: #fff;
 }
 .detail-left img{
     width: 100px;
@@ -78,21 +79,26 @@ export default {
     margin: 0 auto;
     border-radius: 50%;
 }
-ul{
+.text{
     margin-top: 20px
 }
-ul li {
+.text li {
     padding: 10px 0 ;
     text-align: center;
     font-size: 14px
 }
 
-ul li.active,
-ul li:hover {
+.text li.active,
+.text li:hover {
   background: #4fc08d;
   color: #fff;
 }
-ul li a {
+.text li a {
   display: block;
+}
+.right{
+    margin: 20px 0 20px 20px;
+    float: left;
+    width: 980px;
 }
 </style>

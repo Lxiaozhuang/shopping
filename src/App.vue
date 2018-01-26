@@ -23,7 +23,8 @@ export default {
 
 <style>
 body{
-  margin:0
+  margin:0;
+  background: rgb(214, 211, 211);
 }
 ul{
   padding:0;
